@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <h1>History</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Date</th>
+                <th class="text-end">Stock</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+            </tr>
+        </thead>
+        {% for history in history %}
+        <tr>
+            <td class="text-start">{{ history['date'] }}</td>
+            <td class="text-end">{{ history['stock'] }}</td>
+            <td class="text-end">{{ history['shares'] }}</td>
+            <td class="text-end">{{ history['price'] | usd}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

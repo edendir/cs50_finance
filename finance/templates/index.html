@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <h1>Stock Portfolio</h1>
+    <h2>Portfolio Value: {{ total | usd }}</h2>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-start">Stock</th>
+                    <th class="text-end">Shares</th>
+                    <th class="text-end">Current Price</th>
+                    <th class="text-end">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in portfolio %}
+                    <tr>
+                        <td class="text-start">{{ stock['stock'] }}</td>
+                        <td class="text-end">{{ stock['total_shares'] }}</td>
+                        <td class="text-end">{{ stock['price'] | usd}}</td>
+                        <td class="text-end">{{ stock['value'] | usd}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="3">Cash</td>
+                    <td class="border-0 text-end">{{cash | usd}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+{% endblock %}
